@@ -23,3 +23,7 @@ Cada filme também deve possuir um diretor e uma lista de atores que trabalharam
 A classe diretor deve conter os atributos:  nome, área.
 
 A classe ator deve conter os atributos: nome, documento (cpf).
+
+## Diagrama UML do Projeto
+
+![UML Diagram](catalogo-imdbUML.png)
