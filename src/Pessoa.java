@@ -1,11 +1,9 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public abstract class Pessoa {
-    private String nome;
-    private LocalDate dataNascimento;
+    private final String nome;
+
 
     public Pessoa(String nome, LocalDate dataNascimento) {
         if (nome == null || nome.trim().isEmpty()) {
@@ -15,23 +13,17 @@ public abstract class Pessoa {
             throw new IllegalArgumentException("Data de nascimento inválida");
         }
         this.nome = nome;
-        this.dataNascimento = dataNascimento;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
 
     @Override
     public String toString() {
         return "Pessoa{" +
-                "nome='" + nome + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                '}';
+                "nome='" + nome + '\'' + '}';
     }
 
     @Override
@@ -39,7 +31,6 @@ public abstract class Pessoa {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Pessoa pessoa = (Pessoa) obj;
-        return Objects.equals(nome, pessoa.nome) &&
-                Objects.equals(dataNascimento, pessoa.dataNascimento);
+        return Objects.equals(nome, pessoa.nome);
     }
 }
