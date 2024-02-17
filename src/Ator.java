@@ -1,3 +1,11 @@
+public class Ator extends Pessoa{
 
-public class Ator {
+    private String cpf;
+
+    public Ator(String cpf){
+        super(nome);
+        this.cpf = cpf;
+
+    }
+
 }
