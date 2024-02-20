@@ -1,32 +1,26 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Diretor extends Pessoa {
-    private int numeroFilmesDirigidos;
 
-    public Diretor(String nome, LocalDate dataNascimento, int numeroFilmesDirigidos) {
-        super(nome, dataNascimento);
-        this.numeroFilmesDirigidos = numeroFilmesDirigidos;
+    String area;
+
+    public Diretor(String area, String nome) {
+        super(nome);
+        this.area = area;
     }
 
-    public int getNumeroFilmesDirigidos() {
-        return numeroFilmesDirigidos;
-    }
-
-    public void setNumeroFilmesDirigidos(int numeroFilmesDirigidos) {
-        this.numeroFilmesDirigidos = numeroFilmesDirigidos;
-    }
-
-    public static Diretor buscarDiretor(ArrayList<Diretor> diretores, String nomeDiretor) {
-        for (Diretor diretor : diretores) {
-            if (diretor.getNome().equalsIgnoreCase(nomeDiretor)) {
-                return diretor;
-            }
-        }
+    @Override
+    public String toString() {
         return null;
     }
 
-    public static void cadastrarDiretor(ArrayList<Diretor> diretores, Diretor diretor) {
-        diretores.add(diretor);
+    @Override
+    public boolean equals(Object obj) {
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
     }
 }

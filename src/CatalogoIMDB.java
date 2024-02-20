@@ -59,4 +59,35 @@ public class CatalogoIMDB {
         }
         return filmes;
     }
+  
+    public void cadastrarDiretor( String nome, String area){
+        boolean dadosSaoValidos =
+                Validacao.campoEhValido(nome) &&
+                Validacao.campoEhValido(area);
+
+        if (!dadosSaoValidos) {
+            throw new IllegalArgumentException("Dados inválidos, não foi possível cadastrar um novo diretor!");
+        }
+
+        boolean diretorExiste = this.buscarDiretor(nome, area) != null;
+
+        if (diretorExiste) {
+            System.out.println("Diretor já cadastrado!");
+            return;
+        }
+
+        Diretor diretor = new Diretor(nome, area);
+        this.diretores.add(diretor);
+    }
+
+    public Diretor buscarDiretor(String nome, String area){
+        Diretor diretorBuscado = new Diretor(nome, area);
+
+        for(Diretor diretor: this.diretores){
+            if(diretor.equals(diretorBuscado)){
+                return diretor;
+            }
+        }
+        return null;
+    }
 }
