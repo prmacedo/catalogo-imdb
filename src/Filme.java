@@ -23,7 +23,7 @@ public class Filme {
     }
 
     public Filme(String nome, LocalDate dataDeLancamento) {
-        this.nome = nome;
+        this.nome = nome.trim();
         this.dataDeLancamento = dataDeLancamento;
     }
 
