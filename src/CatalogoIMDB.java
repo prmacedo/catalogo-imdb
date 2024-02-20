@@ -3,6 +3,7 @@ import utils.Validacao;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class CatalogoIMDB {
     private List<Filme> filmes;
@@ -37,10 +38,32 @@ public class CatalogoIMDB {
         this.filmes.add(filme);
     }
 
+    private Filme buscarFilme(String nome, LocalDate dataDeLancamento) {
+        Filme filmeBuscado = new Filme(nome, dataDeLancamento);
+
+        for (Filme filme : this.filmes) {
+            if (filme.equals(filmeBuscado)) {
+                return filme;
+            }
+        }
+
+        return null;
+    }
+
+    public ArrayList<Filme> buscarFilmes (String nome) {
+        ArrayList<Filme> filmes = new ArrayList<>();
+        for (Filme filme : this.filmes) {
+            if (filme.getNome().toLowerCase().contains(nome.toLowerCase().trim())) {
+                filmes.add(filme);
+            }
+        }
+        return filmes;
+    }
+  
     public void cadastrarDiretor( String nome, String area){
         boolean dadosSaoValidos =
                 Validacao.campoEhValido(nome) &&
-                        Validacao.campoEhValido(area);
+                Validacao.campoEhValido(area);
 
         if (!dadosSaoValidos) {
             throw new IllegalArgumentException("Dados inválidos, não foi possível cadastrar um novo diretor!");
@@ -65,18 +88,6 @@ public class CatalogoIMDB {
                 return diretor;
             }
         }
-        return null;
-    }
-
-    public Filme buscarFilme(String nome, LocalDate dataDeLancamento) {
-        Filme filmeBuscado = new Filme(nome, dataDeLancamento);
-
-        for (Filme filme : this.filmes) {
-            if (filme.equals(filmeBuscado)) {
-                return filme;
-            }
-        }
-
         return null;
     }
 }
