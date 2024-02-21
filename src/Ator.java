@@ -4,7 +4,7 @@ public class Ator extends Pessoa{
 
     private String cpf;
 
-    public Ator(String cpf){
+    public Ator(String nome, String cpf){
         super(nome);
         this.cpf = cpf;
 
