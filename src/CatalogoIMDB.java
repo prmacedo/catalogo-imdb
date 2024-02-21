@@ -60,7 +60,7 @@ public class CatalogoIMDB {
         return filmes;
     }
   
-    public void cadastrarDiretor( String nome, String area){
+    public void cadastrarDiretor(String nome, String area){
         boolean dadosSaoValidos =
                 Validacao.campoEhValido(nome) &&
                 Validacao.campoEhValido(area);
@@ -90,4 +90,31 @@ public class CatalogoIMDB {
         }
         return null;
     }
+
+    public Ator buscarAtor(String nome, String cpf){
+        Ator atorBuscado = new Ator(nome, cpf);
+        for(Ator ator : this.atores){
+            if(ator.equals(atorBuscado)){
+                return ator;
+            }
+        }
+        return null;
+    }
+
+    public void cadastrarAtor(String nome, String cpf){
+        if(!Validacao.validarDados(nome,cpf)){
+            throw new IllegalArgumentException("Dados inválidos!");
+        }
+        boolean atorExiste = this.buscarAtor(nome,cpf) != null;
+
+        if(atorExiste){
+            System.out.println("Ator já cadastrado!");
+        }
+
+        Pessoa ator = new Ator(nome,cpf);
+        this.atores.add(ator);
+    }
+
+
+
 }

@@ -17,4 +17,14 @@ public class Validacao {
 
         return false;
     }
+
+    public static <T> boolean validarDados(T... dados){
+        boolean dadosValidos = true;
+        for(Object dado : dados){
+            if (!Validacao.campoEhValido(dado)){
+                dadosValidos = false;
+            }
+        }
+        return dadosValidos;
+    }
 }
