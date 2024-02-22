@@ -126,9 +126,20 @@ public class CatalogoIMDB {
 
     @Override
     public String toString() {
-        return "CatalogoIMDB" +
-                "\nfilmes=" + filmes +
-                "\natores=" + atores +
-                "\ndiretores=" + diretores;
+        final StringBuilder sb = new StringBuilder("\n============== CatalogoIMDB ==============");
+        sb.append("\n");
+        sb.append("\nFilmes:");
+        for(Filme filme: filmes){
+            sb.append("\n\tNome: ").append(filme.getNome());
+            sb.append("\n\tLançamento: ").append(filme.getDataDeLancamento());
+            sb.append("\n\tDiretor: ").append(filme.getDiretor());
+            sb.append("\n\tAtores: ");
+            for(Ator ator: atores){
+                sb.append("\n\t\tnome: ").append(ator.getNome());
+            }
+            sb.append("\n\t===========================\n");
+        }
+        sb.append("\n==========================================\n");
+        return sb.toString();
     }
 }
