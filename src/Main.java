@@ -12,10 +12,12 @@ public class Main {
         CatalogoIMDB catalogo = new CatalogoIMDB();
 
         catalogo.cadastrarFilme("Et, O Extra-Terrestre", LocalDate.of(1982, 01, 01), 34_000_000.00, "Et de varginhaa americano dando role");
-        catalogo.cadastrarDiretor("Stevão Espilber", "Ecletico");
-//        catalogo.associaDiretorAFilme(et, diretor1);
-        System.out.println(catalogo.buscarDiretor("Stevão Espilber", "Ecletico").equals(diretor1));
-//        System.out.println(catalogo.toString());
+        catalogo.associaDiretorAFilme(et, diretor1);
 
+        catalogo.cadastrarDiretor("Stevão Espilber", "Ecletico");
+        catalogo.associaDiretorAFilme(et, diretor1);
+
+        System.out.println(catalogo.buscarFilmes("Et"));
+        System.out.println(catalogo);
     }
 }
