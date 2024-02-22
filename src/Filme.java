@@ -23,6 +23,7 @@ public class Filme {
     }
 
     public Filme(String nome, LocalDate dataDeLancamento) {
+        this.atores = new ArrayList<>();
         this.nome = nome.trim();
         this.dataDeLancamento = dataDeLancamento;
     }
@@ -74,6 +75,8 @@ public class Filme {
     public void setAtores(ArrayList<Ator> atores) {
         this.atores = atores;
     }
+
+    public void adicionarAtor (Ator ator) { this.atores.add(ator); }
 
     @Override
     public String toString() {

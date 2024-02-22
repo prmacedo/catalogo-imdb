@@ -124,6 +124,17 @@ public class CatalogoIMDB {
         }
     }
 
+    public void associarAtorAFilme(Filme filmeAAssociar, Ator atorAAssociar) {
+        Filme filmeBuscado = buscarFilme(filmeAAssociar);
+        Ator atorBuscado = buscarAtor(atorAAssociar);
+
+        if (filmeBuscado != null && atorBuscado != null) {
+            filmeBuscado.adicionarAtor(atorBuscado);
+        } else {
+            System.out.println("Não há Filme ou Ator com esses dados!!!");
+        }
+    }
+
     @Override
     public String toString() {
         return "CatalogoIMDB" +

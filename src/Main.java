@@ -6,7 +6,7 @@ public class Main {
         System.out.println("Hello world!");
 
 
-        Pessoa ator1 = new Ator("Rafael", "1234567890");
+        Ator ator1 = new Ator("Rafael", "1234567890");
         Diretor diretor1 = new Diretor("Stevão Espilber", "Ecletico");
         Filme et = new Filme("Et, O Extra-Terrestre", LocalDate.of(1982, 01, 01));
         CatalogoIMDB catalogo = new CatalogoIMDB();
@@ -19,5 +19,11 @@ public class Main {
 
         System.out.println(catalogo.buscarFilmes("Et"));
         System.out.println(catalogo);
+
+        catalogo.cadastrarAtor("Luiz Gabriel", "2345678990-12");
+        catalogo.associarAtorAFilme(et,ator1);
+        catalogo.associarAtorAFilme(et,new Ator("Luiz Gabriel", "2345678990-12"));
+        System.out.println(catalogo);
+
     }
 }
