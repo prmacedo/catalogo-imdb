@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +13,15 @@ public class Main {
         Diretor diretor1 = new Diretor("Stevão Espilber", "Ecletico");
         Filme et = new Filme("Et, O Extra-Terrestre", LocalDate.of(1982, 01, 01));
         CatalogoIMDB catalogo = new CatalogoIMDB();
+
+        ArrayList<Ator> atores = new ArrayList<>();
+        atores.add(ator2);
+        atores.add(ator1);
+        atores.add(ator3);
+        atores.add(ator3);
+        catalogo.cadastrarFilme("Toy Story", LocalDate.of(1994, 12, 12), 30_000_000d, "descricao qualquer", "Diretor", "Arte", atores);
+        atores.remove(0);
+        catalogo.cadastrarFilme("Toy Story 2", LocalDate.of(1998, 12, 12), 30_000_000d, "descricao qualquer", "Diretor", "Arte", atores);
 
         catalogo.cadastrarFilme("Et, O Extra-Terrestre", LocalDate.of(1982, 01, 01), 34_000_000.00, "Et de varginhaa americano dando role");
         catalogo.associaDiretorAFilme(et, diretor1);

@@ -76,7 +76,11 @@ public class Filme {
         this.atores = atores;
     }
 
-    public void adicionarAtor (Ator ator) { this.atores.add(ator); }
+    public void adicionarAtor (Ator ator) {
+        if (!this.atores.contains(ator)) {
+            this.atores.add(ator);
+        }
+    }
 
     @Override
     public String toString() {
