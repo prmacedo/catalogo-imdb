@@ -1,15 +1,21 @@
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
 
         System.out.println("Hello world!");
 
 
-        Pessoa ator = new Ator("Rafael","1234567890");
-
+        Pessoa ator1 = new Ator("Rafael", "1234567890");
+        Diretor diretor1 = new Diretor("Stevão Espilber", "Ecletico");
+        Filme et = new Filme("Et, O Extra-Terrestre", LocalDate.of(1982, 01, 01));
         CatalogoIMDB catalogo = new CatalogoIMDB();
 
-        catalogo.cadastrarAtor(null,"123456789");
+        catalogo.cadastrarFilme("Et, O Extra-Terrestre", LocalDate.of(1982, 01, 01), 34_000_000.00, "Et de varginhaa americano dando role");
+        catalogo.cadastrarDiretor("Stevão Espilber", "Ecletico");
+//        catalogo.associaDiretorAFilme(et, diretor1);
+        System.out.println(catalogo.buscarDiretor("Stevão Espilber", "Ecletico").equals(diretor1));
+//        System.out.println(catalogo.toString());
 
-        System.out.println(ator.nome);
     }
 }
