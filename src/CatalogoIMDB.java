@@ -28,7 +28,7 @@ public class CatalogoIMDB {
             throw new IllegalArgumentException("Dados inválidos, não foi possível cadastrar um novo filme!");
         }
 
-        boolean filmeExiste = this.buscarFilme(nome, dataDeLancamento) != null;
+        boolean filmeExiste = this.buscarFilme(new Filme(nome, dataDeLancamento)) != null;
 
         if (filmeExiste) {
             System.out.println("Filme já cadastrado!");
@@ -39,12 +39,11 @@ public class CatalogoIMDB {
         this.filmes.add(filme);
     }
 
-    private Filme buscarFilme(String nome, LocalDate dataDeLancamento) {
-        Filme filmeBuscado = new Filme(nome, dataDeLancamento);
+    private Filme buscarFilme(Filme filme) {
 
-        for (Filme filme : this.filmes) {
-            if (filme.equals(filmeBuscado)) {
-                return filme;
+        for (Filme filmeAtual : this.filmes) {
+            if (filmeAtual.equals(filme)) {
+                return filmeAtual;
             }
         }
 
@@ -70,7 +69,7 @@ public class CatalogoIMDB {
             throw new IllegalArgumentException("Dados inválidos, não foi possível cadastrar um novo diretor!");
         }
 
-        boolean diretorExiste = this.buscarDiretor(nome, area) != null;
+        boolean diretorExiste = this.buscarDiretor(new Diretor(nome, area)) != null;
 
         if (diretorExiste) {
             System.out.println("Diretor já cadastrado!");
@@ -81,22 +80,19 @@ public class CatalogoIMDB {
         this.diretores.add(diretor);
     }
 
-    public Diretor buscarDiretor(String nome, String area) {
-        Diretor diretorBuscado = new Diretor(nome, area);
-
-        for (Diretor diretor : this.diretores) {
-            if (diretor.equals(diretorBuscado)) {
-                return diretor;
+    private Diretor buscarDiretor(Diretor diretor) {
+        for (Diretor diretorAtual : this.diretores) {
+            if (diretorAtual.equals(diretor)) {
+                return diretorAtual;
             }
         }
         return null;
     }
 
-    public Ator buscarAtor(String nome, String cpf) {
-        Ator atorBuscado = new Ator(nome, cpf);
-        for (Ator ator : this.atores) {
-            if (ator.equals(atorBuscado)) {
-                return ator;
+    private Ator buscarAtor(Ator ator) {
+        for (Ator atorAtual : this.atores) {
+            if (atorAtual.equals(ator)) {
+                return atorAtual;
             }
         }
         return null;
@@ -106,7 +102,8 @@ public class CatalogoIMDB {
         if (!Validacao.validarDados(nome, cpf)) {
             throw new IllegalArgumentException("Dados inválidos!");
         }
-        boolean atorExiste = this.buscarAtor(nome, cpf) != null;
+
+        boolean atorExiste = this.buscarAtor(new Ator(nome, cpf)) != null;
 
         if (atorExiste) {
             System.out.println("Ator já cadastrado!");
@@ -117,23 +114,21 @@ public class CatalogoIMDB {
     }
 
     public void associaDiretorAFilme(Filme filmeAAssociar, Diretor diretorAAssociar) {
-        boolean filmeExiste = buscarFilme(filmeAAssociar.getNome(), filmeAAssociar.getDataDeLancamento()) != null;
-        boolean diretorExiste = buscarDiretor(diretorAAssociar.nome, diretorAAssociar.area) != null;
+        Filme filmeBuscado = buscarFilme(filmeAAssociar);
+        Diretor diretorBuscado = buscarDiretor(diretorAAssociar);
 
-        if (filmeExiste && diretorExiste) {
-            filmeAAssociar.setDiretor(diretorAAssociar);
+        if (filmeBuscado != null && diretorBuscado != null) {
+            filmeBuscado.setDiretor(diretorBuscado);
         } else {
             System.out.println("Não há Filme ou Diretor com esses dados!!!");
         }
     }
 
-
     @Override
     public String toString() {
-        return "CatalogoIMDB{" +
-                "filmes=" + filmes +
-                ", atores=" + atores +
-                ", diretores=" + diretores +
-                '}';
+        return "CatalogoIMDB" +
+                "\nfilmes=" + filmes +
+                "\natores=" + atores +
+                "\ndiretores=" + diretores;
     }
 }

@@ -77,14 +77,13 @@ public class Filme {
 
     @Override
     public String toString() {
-        return "Filme{" +
-                "nome='" + nome + '\'' +
-                ", dataDeLancamento=" + dataDeLancamento +
-                ", orcamento=" + orcamento +
-                ", descricao='" + descricao + '\'' +
-                ", diretor=" + diretor +
-                ", atores=" + atores +
-                '}';
+        return "Filme" +
+                "\nnome: '" + nome + '\'' +
+                "\ndataDeLancamento: " + dataDeLancamento +
+                "\norcamento: " + orcamento +
+                "\ndescricao: '" + descricao + '\'' +
+                "\ndiretor: " + diretor +
+                "\natores: " + atores ;
     }
 
     @Override
