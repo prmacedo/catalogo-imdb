@@ -111,10 +111,7 @@ public class CatalogoIMDB {
             System.out.println("Ator já cadastrado!");
         }
 
-        Pessoa ator = new Ator(nome,cpf);
+        Ator ator = new Ator(nome,cpf);
         this.atores.add(ator);
     }
-
-
-
 }
