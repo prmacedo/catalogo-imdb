@@ -1,3 +1,4 @@
+import org.w3c.dom.ls.LSOutput;
 import utils.Validacao;
 
 import java.time.LocalDate;
@@ -19,9 +20,9 @@ public class CatalogoIMDB {
     public void cadastrarFilme(String nome, LocalDate dataDeLancamento, Double orcamento, String descricao) {
         boolean dadosSaoValidos =
                 Validacao.campoEhValido(nome) &&
-                Validacao.campoEhValido(dataDeLancamento) &&
-                Validacao.campoEhValido(orcamento) &&
-                Validacao.campoEhValido(descricao);
+                        Validacao.campoEhValido(dataDeLancamento) &&
+                        Validacao.campoEhValido(orcamento) &&
+                        Validacao.campoEhValido(descricao);
 
         if (!dadosSaoValidos) {
             throw new IllegalArgumentException("Dados inválidos, não foi possível cadastrar um novo filme!");
@@ -50,7 +51,7 @@ public class CatalogoIMDB {
         return null;
     }
 
-    public ArrayList<Filme> buscarFilmes (String nome) {
+    public ArrayList<Filme> buscarFilmes(String nome) {
         ArrayList<Filme> filmes = new ArrayList<>();
         for (Filme filme : this.filmes) {
             if (filme.getNome().toLowerCase().contains(nome.toLowerCase().trim())) {
@@ -59,11 +60,11 @@ public class CatalogoIMDB {
         }
         return filmes;
     }
-  
-    public void cadastrarDiretor(String nome, String area){
+
+    public void cadastrarDiretor(String nome, String area) {
         boolean dadosSaoValidos =
                 Validacao.campoEhValido(nome) &&
-                Validacao.campoEhValido(area);
+                        Validacao.campoEhValido(area);
 
         if (!dadosSaoValidos) {
             throw new IllegalArgumentException("Dados inválidos, não foi possível cadastrar um novo diretor!");
@@ -80,41 +81,59 @@ public class CatalogoIMDB {
         this.diretores.add(diretor);
     }
 
-    public Diretor buscarDiretor(String nome, String area){
+    public Diretor buscarDiretor(String nome, String area) {
         Diretor diretorBuscado = new Diretor(nome, area);
 
-        for(Diretor diretor: this.diretores){
-            if(diretor.equals(diretorBuscado)){
+        for (Diretor diretor : this.diretores) {
+            if (diretor.equals(diretorBuscado)) {
                 return diretor;
             }
         }
         return null;
     }
 
-    public Ator buscarAtor(String nome, String cpf){
+    public Ator buscarAtor(String nome, String cpf) {
         Ator atorBuscado = new Ator(nome, cpf);
-        for(Ator ator : this.atores){
-            if(ator.equals(atorBuscado)){
+        for (Ator ator : this.atores) {
+            if (ator.equals(atorBuscado)) {
                 return ator;
             }
         }
         return null;
     }
 
-    public void cadastrarAtor(String nome, String cpf){
-        if(!Validacao.validarDados(nome,cpf)){
+    public void cadastrarAtor(String nome, String cpf) {
+        if (!Validacao.validarDados(nome, cpf)) {
             throw new IllegalArgumentException("Dados inválidos!");
         }
-        boolean atorExiste = this.buscarAtor(nome,cpf) != null;
+        boolean atorExiste = this.buscarAtor(nome, cpf) != null;
 
-        if(atorExiste){
+        if (atorExiste) {
             System.out.println("Ator já cadastrado!");
         }
 
-        Pessoa ator = new Ator(nome,cpf);
+        Ator ator = new Ator(nome, cpf);
         this.atores.add(ator);
     }
 
+    public void associaDiretorAFilme(Filme filmeAAssociar, Diretor diretorAAssociar) {
+        boolean filmeExiste = buscarFilme(filmeAAssociar.getNome(), filmeAAssociar.getDataDeLancamento()) != null;
+        boolean diretorExiste = buscarDiretor(diretorAAssociar.nome, diretorAAssociar.area) != null;
+
+        if (filmeExiste && diretorExiste) {
+            filmeAAssociar.setDiretor(diretorAAssociar);
+        } else {
+            System.out.println("Não há Filme ou Diretor com esses dados!!!");
+        }
+    }
 
 
+    @Override
+    public String toString() {
+        return "CatalogoIMDB{" +
+                "filmes=" + filmes +
+                ", atores=" + atores +
+                ", diretores=" + diretores +
+                '}';
+    }
 }

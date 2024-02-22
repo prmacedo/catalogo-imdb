@@ -1,26 +1,40 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Diretor extends Pessoa {
 
     String area;
 
-    public Diretor(String area, String nome) {
+    public Diretor( String nome, String area) {
         super(nome);
         this.area = area;
     }
 
-    @Override
-    public String toString() {
-        return null;
+    public String getArea() {
+        return area;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return false;
+    public String toString() {
+        return "Nome: " + this.nome;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (!(o instanceof Diretor)) {
+            return false;
+        }
+        Diretor diretor = (Diretor) o;
+
+        return this.getNome().equals(diretor.getNome()) && this.getArea().equals(diretor.getArea());
+
     }
 
     @Override
     public int hashCode() {
-        return 0;
+        return Objects.hash(nome, area);
     }
 }
