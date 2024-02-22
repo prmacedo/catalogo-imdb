@@ -146,7 +146,7 @@ public class CatalogoIMDB {
             sb.append("\n\tDiretor: ").append(filme.getDiretor());
             sb.append("\n\tAtores: ");
             for(Ator ator: atores){
-                sb.append("\n\t\tnome: ").append(ator.getNome());
+                sb.append("\n\t\t").append(ator.getNome());
             }
             sb.append("\n\t===========================\n");
         }

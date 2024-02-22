@@ -16,7 +16,7 @@ public class Diretor extends Pessoa {
 
     @Override
     public String toString() {
-        return "Nome: " + this.nome;
+        return this.nome + " (" + this.area + ")";
     }
 
     @Override
