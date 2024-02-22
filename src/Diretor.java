@@ -1,9 +1,10 @@
-import java.util.ArrayList;
+import pessoa.Pessoa;
+
 import java.util.Objects;
 
 public class Diretor extends Pessoa {
 
-    String area;
+    private String area;
 
     public Diretor( String nome, String area) {
         super(nome);

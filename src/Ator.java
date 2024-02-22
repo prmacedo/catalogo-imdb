@@ -1,17 +1,14 @@
+import pessoa.Pessoa;
+
 import java.util.Objects;
 
-public class Ator extends Pessoa{
+public class Ator extends Pessoa {
 
     private String cpf;
 
     public Ator(String nome, String cpf){
         super(nome);
         this.cpf = cpf;
-
-    }
-
-    public String getNome(){
-        return this.nome;
     }
 
     public String getCpf(){
