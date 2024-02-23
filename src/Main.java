@@ -19,9 +19,9 @@ public class Main {
         atores.add(ator1);
         atores.add(ator3);
         atores.add(ator3);
-        catalogo.cadastrarFilme("Toy Story", LocalDate.of(1994, 12, 12), 30_000_000d, "descricao qualquer", "Diretor", "Arte", atores);
+        catalogo.cadastrarFilme("Toy Story", LocalDate.of(1994, 12, 12), 30_000_000d, "descricao qualquer", "John Lasseter", "Arte", atores);
         atores.remove(0);
-        catalogo.cadastrarFilme("Toy Story 2", LocalDate.of(1998, 12, 12), 30_000_000d, "descricao qualquer", "Diretor", "Arte", atores);
+        catalogo.cadastrarFilme("Toy Story 2", LocalDate.of(1998, 12, 12), 30_000_000d, "descricao qualquer", "John Lasseter", "Arte", atores);
 
         catalogo.cadastrarFilme("Et, O Extra-Terrestre", LocalDate.of(1982, 01, 01), 34_000_000.00, "Et de varginhaa americano dando role");
         catalogo.associaDiretorAFilme(et, diretor1);
@@ -38,6 +38,9 @@ public class Main {
         catalogo.associarAtorAFilme(et,ator1);
         catalogo.associarAtorAFilme(et,new Ator("Luiz Gabriel", "2345678990-12"));
         System.out.println(catalogo);
+
+        catalogo.listarAtores();
+        catalogo.listarDiretores();
 
     }
 }
