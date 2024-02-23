@@ -166,7 +166,6 @@ public class CatalogoIMDB {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("\n============== CatalogoIMDB ==============");
-        sb.append("\n");
         sb.append("\nFilmes:");
         for(Filme filme: filmes){
             sb.append("\n\tNome: ").append(filme.getNome());
