@@ -3,6 +3,8 @@ import utils.Validacao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -114,6 +116,14 @@ public class CatalogoIMDB {
         return null;
     }
 
+    public void listarDiretores(){
+        Collections.sort(diretores, (diretor1, diretor2) -> diretor1.getNome().compareTo(diretor2.getNome()));
+        System.out.println("\n===== Diretores =====");
+        for (Diretor diretor : diretores) {
+            System.out.println("=> " + diretor.getNome());
+        }
+    }
+
     private Ator buscarAtor(Ator ator) {
         for (Ator atorAtual : this.atores) {
             if (atorAtual.equals(ator)) {
@@ -121,6 +131,14 @@ public class CatalogoIMDB {
             }
         }
         return null;
+    }
+
+    public void listarAtores(){
+        Collections.sort(atores, (actor1, actor2) -> actor1.getNome().compareTo(actor2.getNome()));
+        System.out.println("\n===== Atores =====");
+        for (Ator ator : atores) {
+            System.out.println("=> " + ator.getNome());
+        }
     }
 
     public Ator cadastrarAtor(String nome, String cpf) {
