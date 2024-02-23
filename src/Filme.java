@@ -87,7 +87,7 @@ public class Filme {
         final StringBuilder sb = new StringBuilder("\nFilme =========================");
             sb.append("\n\tNome: ").append(nome);
             sb.append("\n\tLancamento: ").append(dataDeLancamento);
-            sb.append("\n\tOrcamento: ").append(orcamento);
+            sb.append("\n\tOrcamento: ").append(String.format("%.2f", orcamento));
             sb.append("\n\tDiretor: ").append(diretor);
             sb.append("\n\tAtores: ");
             for(Ator ator: atores){
