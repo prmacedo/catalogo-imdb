@@ -84,13 +84,18 @@ public class Filme {
 
     @Override
     public String toString() {
-        return "Filme" +
-                "\nnome: '" + nome + '\'' +
-                "\ndataDeLancamento: " + dataDeLancamento +
-                "\norcamento: " + orcamento +
-                "\ndescricao: '" + descricao + '\'' +
-                "\ndiretor: " + diretor +
-                "\natores: " + atores ;
+        final StringBuilder sb = new StringBuilder("\nFilme =========================");
+            sb.append("\n\tNome: ").append(nome);
+            sb.append("\n\tLancamento: ").append(dataDeLancamento);
+            sb.append("\n\tOrcamento: ").append(orcamento);
+            sb.append("\n\tDiretor: ").append(diretor);
+            sb.append("\n\tAtores: ");
+            for(Ator ator: atores){
+                sb.append("\n\t\t").append(ator.getNome());
+            }
+
+        sb.append("\n===============================\n");
+        return sb.toString();
     }
 
     @Override
